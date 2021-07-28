@@ -1,3 +1,4 @@
+"""
 # id定位法
 from  selenium import  webdriver
 from time import  sleep
@@ -15,3 +16,44 @@ password = driver.find_element_by_id("passworA")
 username.send_keys("admin")
 # 密码输入123456
 password.send_keys("123456")
+# 延迟时间
+sleep(3)
+#关闭
+driver.quit()
+"""
+
+"""
+# name定位法
+# 导包
+from selenium import  webdriver
+from time import  sleep
+# 获取浏览器对象
+driver = webdriver.Chrome()
+#打开url
+url = ""
+driver.get(url)
+# 查找用户名 admin
+driver.find_element_by_name("userA").send_keys("admin")
+# 查找密码 123456
+driver.find_element_by_name("passwordA").send_keys("123456")
+
+# 暂停3s
+sleep(3)
+"""
+# class_name()定位法
+
+# 导包
+from selenium import  webdriver
+from time import  sleep
+# 获取浏览器对象
+driver = webdriver.Chrome()
+#打开url
+url = ""
+driver.get(url)
+# 查找电话 输入186111111111
+driver.find_element_by_class_name("tellA").send_keys("186111111111")
+# 查找邮箱 123456@qq.com
+driver.find_element_by_class_name("emailA").send_keys("123456@qq.com")
+# 前体需要由class属性，同样其他元素需要id属性和name属性
+# 暂停3s
+sleep(3)
