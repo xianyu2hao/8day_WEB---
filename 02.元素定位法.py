@@ -41,10 +41,10 @@ driver.find_element_by_name("passwordA").send_keys("123456")
 sleep(3)
 """
 # class_name()定位法
-
+"""
 # 导包
 from selenium import  webdriver
-from time import  sleep
+from time import sleep
 # 获取浏览器对象
 driver = webdriver.Chrome()
 #打开url
@@ -54,6 +54,78 @@ driver.get(url)
 driver.find_element_by_class_name("tellA").send_keys("186111111111")
 # 查找邮箱 123456@qq.com
 driver.find_element_by_class_name("emailA").send_keys("123456@qq.com")
-# 前体需要由class属性，同样其他元素需要id属性和name属性
+# 前提需要由class属性，同样其他元素需要id属性和name属性
 # 暂停3s
 sleep(3)
+"""
+'''
+# tag_name定位
+# 导包
+from selenium import webdriver
+from time import sleep
+
+# 获取浏览器
+driver = webdriver.Chrome()
+
+# 打开html页面
+url = ""
+driver.get(url)
+# tag_name定位用户名并输入admin
+# 页面存在多个标签，默认选择第一个标签
+driver.find_element_by_tag_name("imput").send_keys("admin")
+# 暂停3秒
+sleep(3)
+# 退出
+driver.quit()
+'''
+"""
+# link_text定位，使用html页面，访问 新浪 链接
+# 方法：diver.find_element_link_text() 定位元素
+#      click
+# 模糊定位的方法：partial_link_text # 智能定位a标签，且定位只能唯一，否则出问题
+# 导包
+from selenium import webdriver
+from time import sleep
+
+# 获取浏览器
+driver = webdriver.Chrome()
+# 打开html页面
+url = ""
+driver.get(url)
+# 注意这个链接的全程需要匹配，不能省略例如“新浪”,非“新”
+driver.find_element_by_link_text("新浪").click()
+    # # 使用精准或模糊定位，模糊定位最好能代表唯一标签，多个值，默认返回第一个。
+    # driver.find_element_by_partial_link_text("新").click()
+# 暂停3秒
+sleep(3)
+# 退出
+driver.quit()
+"""
+'''
+# Xpath定位：其为xml path的简称,XML也是一种标记语言，html显示元素，css控制元素，xml为存储和传递数据，一般做软件配置。
+# 定位策略：1.路径；2.元素属性；3.属性和逻辑；4.层级与属性
+# 使用绝对路径定位 用户名 输入admin;暂停2秒钟；使用相对路径定位 密码 输入123456
+# 导包
+from selenium import webdriver
+from time import sleep
+
+# 获取浏览器
+driver = webdriver.Chrome()
+# 打开html页面
+url = ""
+driver.get(url)
+# 绝对路径
+driver.find_element_by_xpath("/html/body/form/div/p[1]/input").send_keys("admin")
+# 相对路径
+driver.find_element_by_xpath("//input[ @id ='password']").send_keys("123456")
+# 逻辑结合
+driver.find_element_by_xpath("//input[ @id ='password' and @placehold = '密码A']").send_keys("123456")
+#层级结合
+driver.find_element_by_xpath("//input[@ id = 'p1']/input").send_keys("123456")
+# 暂停3秒
+sleep(2)
+# 停止
+driver.quit()
+'''
+
+# css的元素定位
