@@ -128,4 +128,37 @@ sleep(2)
 driver.quit()
 '''
 
-# css的元素定位
+# css的元素定位，是一种语言，描述HTML的样式。
+# 使用id选择器定位用户名输入admin
+# 使用css属性定位密码，输入123456
+# 使用css 的class选择器定位电话，输入18688888888
+# 使用css的元素选择器，定位span标签获取文本。
+# 使用css的层级选择器，定位email输入123@qq.com
+# 格式：driver.find_element_by_css_selector(css_selector)
+#     元素获取文本的方法 元素.text
+# 导包
+from selenium import webdriver
+from time import sleep
+
+# 获取浏览器
+driver = webdriver.Chrome()
+
+# 打开html页面
+url = ""
+driver.get(url)
+# 使用id选择器定位用户名输入admin
+driver.find_element_by_css_selector("#id=userA").send_keys("admin")
+# 使用css属性定位密码，输入123456
+driver.find_element_by_css_selector("name=password").send_keys("123456")
+# 使用css 的class选择器定位电话，输入18688888888
+driver.find_element_by_css_selector(".testA").send_keys("18688888888")
+# 使用css的元素选择器，定位span标签获取文本。
+spans = driver.find_element_by_css_selector("span").text
+print("获取span标签的文本值",spans)
+# 使用css的层级选择器，定位email输入123@qq.com
+driver.find_element_by_css_selector("p>input[placeholder='电子邮箱A']").send_keys("123@qq.com")
+
+# 暂停3秒
+sleep(2)
+# 停止
+driver.quit()
